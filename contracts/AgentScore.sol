@@ -34,9 +34,9 @@ contract AgentScore is ReentrancyGuard, Ownable {
     mapping(address => Agent) public agents;
     mapping(address => bool) public isRegistered;
     uint256 public agentCount;
-    uint256 public baseScore;
+    uint256 public baseScore = 500;
     uint256 public minScore;
-    uint256 public maxScore;
+    uint256 public maxScore = 1000;
 
     event AgentRegistered(address indexed agent, uint256 initialScore);
     event ScoreAttested(address indexed agent, address indexed attester, int256 delta, string reason);
@@ -114,11 +114,14 @@ contract AgentScore is ReentrancyGuard, Ownable {
     }
 
     function updateBaseScore(uint256 newBase) external onlyOwner {
+        require(newBase >= minScore && newBase <= maxScore, "Base score out of bounds");
         baseScore = newBase;
     }
 
     function updateLimits(uint256 newMin, uint256 newMax) external onlyOwner {
         require(newMin < newMax, "Invalid limits");
+        require(newMax <= uint256(type(int256).max), "Score limit too large");
+        require(baseScore >= newMin && baseScore <= newMax, "Base score out of bounds");
         minScore = newMin;
         maxScore = newMax;
     }
