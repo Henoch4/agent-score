@@ -19,7 +19,7 @@ Wallet actions require BOT Chain mainnet, deployed bytecode, and a connected com
 
 ## Contract interface
 
-`frontend/product.json` uses the current-source ABI, verified against the deployed mainnet bytecode.
+`frontend/product.json` uses the current-source ABI, matched against the deployed mainnet runtime bytecode. Explorer source publication is tracked separately.
 
 | Action | Contract signature |
 |---|---|
