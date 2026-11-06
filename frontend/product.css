@@ -59,3 +59,10 @@ body.suite-product button,body.suite-product a{cursor:pointer!important}
 @media(max-width:900px){.su-bento #suite-stats{grid-template-columns:1fr 1fr}.su-bento .suite-stat:first-child{grid-column:auto}}
 @media(max-width:560px){.su-bento #suite-stats{grid-template-columns:1fr}}
 
+/* ==== footer brand ==== */
+.suite-footer{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.footer-brand{display:flex;align-items:center;gap:8px}
+.footer-logo{width:20px;height:20px;flex-shrink:0}
+.footer-brand strong{font:700 14px/1.2 inherit;letter-spacing:-.01em}
+.footer-brand strong,.footer-brand svg{color:currentColor}
+@media(max-width:600px){.suite-footer{justify-content:center;gap:10px}.footer-brand{order:-1;width:100%;justify-content:center}}
